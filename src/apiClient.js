@@ -271,7 +271,8 @@ class ApiClient {
     }
 
     fetchWithFailover(request, enableReconnection) {
-        console.log(`Requesting ${request.url}`);
+        // sdc
+        // console.log(`Requesting ${request.url}`);
 
         request.timeout = 30000;
         const instance = this;
@@ -345,7 +346,8 @@ class ApiClient {
         }
 
         if (this.enableAutomaticNetworking === false || request.type !== 'GET') {
-            console.log(`Requesting url without automatic networking: ${request.url}`);
+            // sdc
+            // console.log(`Requesting url without automatic networking: ${request.url}`);
 
             const instance = this;
             return getFetchPromise(request)
@@ -647,7 +649,8 @@ class ApiClient {
     }
 
     sendWebSocketMessage(name, data) {
-        console.log(`Sending web socket message: ${name}`);
+        // sdc
+        // console.log(`Sending web socket message: ${name}`);
 
         let msg = { MessageType: name };
 
@@ -764,7 +767,8 @@ class ApiClient {
                 Size: byteSize
             });
 
-            console.log(`Requesting ${url}`);
+            // sdc
+            // console.log(`Requesting ${url}`);
 
             const xhr = new XMLHttpRequest;
 
@@ -798,7 +802,8 @@ class ApiClient {
                     const bytesPerSecond = bytesLoaded / responseTimeSeconds;
                     const bitrate = Math.round(bytesPerSecond * 8);
 
-                    console.debug(`BitrateTest ${bytesLoaded} bytes loaded (${byteSize} requested) in ${responseTimeSeconds} seconds -> ${bitrate} bps`);
+                    // sdc
+                    // console.debug(`BitrateTest ${bytesLoaded} bytes loaded (${byteSize} requested) in ${responseTimeSeconds} seconds -> ${bitrate} bps`);
 
                     resolve(bitrate);
                 } else {
@@ -4040,9 +4045,11 @@ function onMessageReceivedInternal(instance, msg) {
             instance._currentUser = null;
         }
     } else if (msg.MessageType === 'KeepAlive') {
-        console.debug('Received KeepAlive from server.');
+        // sdc
+        // console.debug('Received KeepAlive from server.');
     } else if (msg.MessageType === 'ForceKeepAlive') {
-        console.debug(`Received ForceKeepAlive from server. Timeout is ${msg.Data} seconds.`);
+        // sdc
+        // console.debug(`Received ForceKeepAlive from server. Timeout is ${msg.Data} seconds.`);
         instance.sendWebSocketMessage('KeepAlive');
         scheduleKeepAlive(instance, msg.Data);
     }
@@ -4071,7 +4078,8 @@ function scheduleKeepAlive(apiClient, timeout) {
  * @since 10.6.0
  */
 function clearKeepAlive(apiClient) {
-    console.debug('Clearing KeepAlive for', apiClient._webSocket);
+    // sdc
+    // console.debug('Clearing KeepAlive for', apiClient._webSocket);
     if (apiClient.keepAliveInterval) {
         clearInterval(apiClient.keepAliveInterval);
         apiClient.keepAliveInterval = null;

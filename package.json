@@ -38,9 +38,9 @@
     "Firefox ESR"
   ],
   "scripts": {
-    "prepare": "webpack --mode production",
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production",
+    "prepare": "npm run build",
+    "dev": "webpack --mode development --progress",
+    "build": "webpack --mode production --progress",
     "lint": "eslint \"src\"",
     "test": "jest",
     "docs": "jsdoc src -r -R README.md -d docs"
